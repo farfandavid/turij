@@ -1,0 +1,272 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/logo.png" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="top">
+			<header class="nav-container">
+				<nav>
+					<a href="">Inicio</a>
+					<a href="">Nosotros</a>
+					<a href="">Contactanos</a>
+					<a href="">Ayuda</a>
+					<a href="">User</a>
+				</nav>
+			</header>
+			<div class="logo-container">
+				<img src="/logo.png" alt="logo" class="logo" />
+				<div class="wrap">
+					<div class="search">
+						<input
+							type="text"
+							class="searchTerm"
+							placeholder="A donde te gustaria ir?..."
+						/>
+						<button type="submit" class="searchButton">
+							<span class="material-symbols-outlined"
+								>travel_explore</span
+							>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="filter"></div>
+		<main>
+			<div class="nav-tabs">
+				<button class="btn-pressed"
+					><span class="material-symbols-outlined">
+						hotel
+					</span>Alojamientos</button
+				>
+				<button class="btn-unpressed"
+					><span class="material-symbols-outlined">
+						hiking
+					</span>Actividades</button
+				>
+				<button class="btn-unpressed"
+					><span class="material-symbols-outlined">
+						restaurant_menu
+					</span>Restaurantes</button
+				>
+				<button class="btn-unpressed"
+					><span class="material-symbols-outlined">
+						call_quality
+					</span>Servicios</button
+				>
+				<button class="btn-unpressed"
+					><span class="material-symbols-outlined">
+						bus_alert
+					</span>Terminales</button
+				>
+			</div>
+			<div class="row-container">
+				<div class="filter-card flex-col">
+					<h3>Filtro</h3>
+					<p>hotel</p>
+					<p>hotel</p>
+					<p>hotel</p>
+					<p>hotel</p>
+					<p>hotel</p>
+				</div>
+				<div class="card-container">
+					<section class="card-promo"></section>
+					<section class="cards-container">
+						<div class="card"></div>
+					</section>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--light-green-color: #46b9a6;
+		--dark-green-color: #659a91;
+		--white-color: #ffffff;
+		--light-orange-color: #fcb49c;
+		--orange-color: #f68058;
+		--star-color: #f9e000;
+		--gray-color: #d9d9d9;
+		--dark-gray-color: #636363;
+	}
+
+	body {
+		background-color: var(--light-green-color);
+		margin: 0;
+		padding: 0;
+	}
+
+	main {
+		margin: 0;
+		padding: 0;
+	}
+	.top {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		height: 80dvh;
+		gap: 33px;
+		align-self: stretch;
+		background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+			url("/bgt.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 50% 50%;
+	}
+
+	.filter {
+		display: flex;
+		justify-content: center;
+		padding-top: 20px;
+		background: var(--white-color);
+		width: 100%;
+		gap: 2%;
+	}
+
+	.nav-tabs {
+		display: flex;
+		justify-content: center;
+		padding-top: 15px;
+		background: var(--dark-green-color);
+		width: 100%;
+		gap: 2%;
+	}
+
+	.nav-tabs * {
+		color: var(--white-color);
+	}
+
+	.nav-tabs button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 2px;
+	}
+
+	.nav-tabs .btn-pressed {
+		background-color: var(--light-green-color);
+		border: none;
+		border-radius: 10px 10px 0 0;
+		padding: 10px;
+	}
+
+	.nav-tabs .btn-unpressed {
+		background-color: var(--dark-green-color);
+		border: none;
+		border-radius: 10px 10px 0 0;
+		padding: 10px;
+	}
+
+	.nav-card {
+		background: var(--dark-green-color);
+		width: 100%;
+		height: 60px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.logo {
+		width: 250px;
+		box-sizing: border-box;
+		border-radius: 100%;
+		box-shadow: 0px 0px 0px 15px var(--white-color) inset;
+		margin: 0;
+		padding: 0;
+	}
+
+	/** Seach Css */
+	.search {
+		width: 100%;
+		position: relative;
+		display: flex;
+	}
+
+	.searchTerm {
+		width: 100%;
+		border: 3px solid var(--white-color);
+		padding: 5px;
+		height: 20px;
+		border-radius: 10px 0 0 10px;
+		color: #d9d9d9d9;
+	}
+
+	.searchTerm:focus {
+		color: black;
+	}
+
+	.searchButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 36px;
+		border: 1px solid var(--white-color);
+		background: var(--white-color);
+		color: black;
+		border-radius: 0 10px 10px 0;
+		cursor: pointer;
+		font-size: 20px;
+	}
+
+	/*Resize the wrap to see the search bar change!*/
+	.wrap {
+		border-radius: 10px;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		width: 30%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	/** end Seach Css */
+	/** */
+	.row-container {
+		display: flex;
+		flex-direction: row;
+		margin: 0;
+		padding: 20px;
+		gap: 10px;
+	}
+
+	.filter-card {
+		display: flex;
+		flex-direction: column;
+		background: var(--white-color);
+		width: 20%;
+		border-radius: 10px;
+	}
+
+	.card-container {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+		margin: 0;
+	}
+
+	.card-promo {
+		width: auto;
+		height: 300px;
+		background: var(--light-orange-color);
+		border-radius: 10px;
+	}
+</style>
